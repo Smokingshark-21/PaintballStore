@@ -1,4 +1,6 @@
-package Unterkategorien
+package Kategorien.Unterkategorien
+
+
 
 open class Ausrüstung(
     marke:String,
@@ -7,4 +9,4 @@ open class Ausrüstung(
     kundenrezesion:Int,
     anzahl:Int,
     farbe:String,
-    groeße:String,): Artikel(marke,name,preis,kundenrezesion,anzahl,farbe) {}
+    var groeße:String,): Artikel(marke,name,preis,kundenrezesion,anzahl,farbe) {}

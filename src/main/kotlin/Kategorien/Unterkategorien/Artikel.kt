@@ -1,4 +1,4 @@
-package Unterkategorien
+package Kategorien.Unterkategorien
 
 open class Artikel(
     var marke:String,
@@ -8,7 +8,5 @@ open class Artikel(
     var anzahl:Int,
     var farbe:String) {
 
-    override fun toString(): String {
-        return "$marke $name $kundenrezesion $farbe $preis $anzahl"
-    }
+
 }
