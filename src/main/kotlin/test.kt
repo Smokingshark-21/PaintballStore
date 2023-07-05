@@ -1,3 +1,5 @@
+import ACC.Account
+import ACC.Acounts.Konto
 import Kategorien.*
 
 fun main(){
@@ -5,8 +7,8 @@ fun main(){
 
 
     var t1 = Kategorie()
-
-    t1.filterUnterkategorien()
+    var a = Account()
+  /*  t1.filterUnterkategorien()
     println()
     t1.filterproduct()
     println()
@@ -14,5 +16,8 @@ fun main(){
     println()
     t1.sortPreis()
 
+*/
+    a.einlogen()
+    a.auslogen("admin")
 
 }

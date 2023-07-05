@@ -1,11 +1,11 @@
 package Kategorien
 
-import Kategorien.artikel.*
+
 import Kategorien.Unterkategorien.Artikel
 import Kategorien.Unterkategorien.Ausrüstung
 import Kategorien.Unterkategorien.Makierer
 import Kategorien.Unterkategorien.artikel.*
-import artikel.*
+
 
 
 class Kategorie() {
@@ -24,6 +24,7 @@ class Kategorie() {
         Magfed("Rap4","468",800.0,5,10,"Schwarz",68,5),
         PneumatTunier("Planet Eclipse","ETHA 3",599.95,5,100,"Schwarz",68,15)
     )
+
     fun filterUnterkategorien() {
 
         print("Ausrüstung\n")
