@@ -10,12 +10,14 @@ class Account() {
 
     val accountliste = mutableListOf<Konto>(
         Betreiber("admin",1997),
+        Kunde("max12@gmail.com","max",1912,"Payapal1")
     )
 
-    var zahlungsMethodenliste = mutableListOf<String>("Payapal","Klaruna","Kredit-Debitkarte")
+    var zahlungsMethodenliste = mutableListOf<String>("Payapal","Klaruna","Kredit-Debitkarte",)
 
 
-    fun einlogen():Boolean{
+    fun einlogen(){
+
         do {
             try {
 
@@ -30,19 +32,21 @@ class Account() {
 
 
                 if (check(bInput,pInput)){
+                    println("Willkommen $bInput")
+                    Thread.sleep(1000)
                     break
                 }else{
                     println("Falsche eingabe probieren sie es noch einmal")
                     continue
                 }
 
+
+
             } catch (e: Exception) {
                 println("Falsche eingabe probieren sie es noch einmal")
                 continue
             }
         } while (true)
-
-        return true
     }
 
 
@@ -77,9 +81,17 @@ class Account() {
 
                 println("Wilkommen bei der Erstellung ihren Kontos\n")
 
+                println("Geben sie ihr alter ein")
+                var ageInput = readln().toInt()
+
+                if (ageInput < 12){
+                    println("Registrieren nicht möglich")
+                    break
+                }
+
                 do {
                     println("Geben sie ihre Email ein, es sind nur Google Email Adressen erlaubt")
-                    var eInput = readln().lowercase()
+                    val eInput = readln().lowercase()
                     if (eInput.contains("@gmail.com")){
                         email=eInput
                         break
@@ -90,7 +102,7 @@ class Account() {
                 }while (true)
 
                     println("Geben sie ihren benutzernamen ein:")
-                    email = readln().lowercase()
+                    benutzerName = readln().lowercase()
 
 
                 do {
@@ -142,6 +154,7 @@ class Account() {
 
                 accountliste.add(Kunde(email,benutzerName,passwort,zahlungsMehtode))
                 println("Ihr Konto wurde erfolgreich angelegt")
+                break
 
             }catch (e:Exception){
                 println("Falsche eingabe probieren sie es noch einmal")
