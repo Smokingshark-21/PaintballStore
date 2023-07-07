@@ -5,7 +5,7 @@ import Kategorien.Unterkategorien.Artikel
 import Kategorien.Unterkategorien.Ausrüstung
 import Kategorien.Unterkategorien.Makierer
 import Kategorien.Unterkategorien.artikel.*
-
+import Kategorien.Unterkategorien.artikel.Magfed as Magfed
 
 
 class Kategorie() {
@@ -53,7 +53,7 @@ class Kategorie() {
                     for (i in artikel){
                         if (i is Magfed){
                             val j = artikel.indexOf(i)
-                            println(artikel[j].toString())
+                            println("[${j + 1}] ${artikel[j].toString()}")
                         }
                     }
 
@@ -61,7 +61,7 @@ class Kategorie() {
                     for (i in artikel){
                         if (i is PneumatTunier){
                             val j = artikel.indexOf(i)
-                            println(artikel[j].toString())
+                            println("[${j + 1}] ${artikel[j].toString()}")
                         }
                     }
 
@@ -69,7 +69,7 @@ class Kategorie() {
                     for (i in artikel){
                         if (i is Supairhose){
                             val j = artikel.indexOf(i)
-                            println(artikel[j].toString())
+                            println("[${j + 1}] ${artikel[j].toString()}")
                         }
                     }
 
@@ -77,7 +77,7 @@ class Kategorie() {
                     for (i in artikel) {
                         if (i is Maske) {
                             val j = artikel.indexOf(i)
-                            println(artikel[j].toString())
+                            println("[${j + 1}] ${artikel[j].toString()}")
                         }
                     }
 
@@ -85,7 +85,7 @@ class Kategorie() {
                     for (i in artikel) {
                         if (i is Tacticalshirt) {
                             val j = artikel.indexOf(i)
-                            println(artikel[j].toString())
+                            println("[${j + 1}] ${artikel[j].toString()}")
                         }
                     }
 
@@ -93,7 +93,7 @@ class Kategorie() {
                     for (i in artikel) {
                         if (i is Tacticalhose) {
                             val j = artikel.indexOf(i)
-                            println(artikel[j].toString())
+                            println("[${j + 1}] ${artikel[j].toString()}")
                         }
                     }
 
@@ -101,7 +101,7 @@ class Kategorie() {
                     for (i in artikel) {
                         if (i is Jersey) {
                             val j = artikel.indexOf(i)
-                            println(artikel[j].toString())
+                            println("[${j + 1}] ${artikel[j].toString()}")
                         }
                     }
 
@@ -110,16 +110,16 @@ class Kategorie() {
 
 
     fun sortAlphabetischmarke(){
-        var sortliste = artikel.sortedBy { it.marke }
-        for (i in sortliste){
-            println(i)
+        this.artikel = artikel.sortedBy { it.marke }.toMutableList()
+        for (i in artikel.indices){
+            println("[${i+1}] ${artikel[i]}")
         }
     }
 
     fun sortPreis(){
-        var sortlistepreis = artikel.sortedBy { it.preis }
-        for (i in sortlistepreis.indices){
-            println("[${i+1}] ${sortlistepreis[i]}")
+        this.artikel = artikel.sortedBy { it.preis }.toMutableList()
+        for (i in artikel.indices){
+            println("[${i+1}] ${artikel[i]}")
         }
     }
 }

@@ -1,6 +1,7 @@
 import ACC.Account
 import ACC.Acounts.Kunde
 import Kategorien.Kategorie
+import Kategorien.Unterkategorien.Artikel
 
 class Paintballstore() {
 
@@ -12,14 +13,14 @@ class Paintballstore() {
         do {
             try {
 
-                var auswahlListe = listOf<String>("Login", "Registrieren")
+                val auswahlListe = listOf<String>("Login", "Registrieren")
 
                 println("Wähle sie anhand der Ziffern aus\n")
                 for (i in auswahlListe.indices) {
                     println("[${i + 1}] ${auswahlListe[i]}\n")
                 }
 
-                var lrInput = readln().toInt()
+                val lrInput = readln().toInt()
 
                 when (lrInput) {
                     1 -> {
@@ -59,32 +60,32 @@ class Paintballstore() {
             try {
                 println(
                     "\n" +
-                            "██████╗░░█████╗░██╗███╗░░██╗████████╗██████╗░░█████╗░██╗░░░░░██╗░░░░░░██████╗████████╗░█████╗░██████╗░███████╗\n" +
-                            "██╔══██╗██╔══██╗██║████╗░██║╚══██╔══╝██╔══██╗██╔══██╗██║░░░░░██║░░░░░██╔════╝╚══██╔══╝██╔══██╗██╔══██╗██╔════╝\n" +
-                            "██████╔╝███████║██║██╔██╗██║░░░██║░░░██████╦╝███████║██║░░░░░██║░░░░░╚█████╗░░░░██║░░░██║░░██║██████╔╝█████╗░░\n" +
-                            "██╔═══╝░██╔══██║██║██║╚████║░░░██║░░░██╔══██╗██╔══██║██║░░░░░██║░░░░░░╚═══██╗░░░██║░░░██║░░██║██╔══██╗██╔══╝░░\n" +
-                            "██║░░░░░██║░░██║██║██║░╚███║░░░██║░░░██████╦╝██║░░██║███████╗███████╗██████╔╝░░░██║░░░╚█████╔╝██║░░██║███████╗\n" +
-                            "╚═╝░░░░░╚═╝░░╚═╝╚═╝╚═╝░░╚══╝░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═════╝░░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝╚══════╝"
+                            "${fg(34)}██████╗░░█████╗░██╗███╗░░██╗████████╗██████╗░░█████╗░██╗░░░░░██╗░░░░░░██████╗████████╗░█████╗░██████╗░███████╗$RC\n" +
+                            "${fg(34)}██╔══██╗██╔══██╗██║████╗░██║╚══██╔══╝██╔══██╗██╔══██╗██║░░░░░██║░░░░░██╔════╝╚══██╔══╝██╔══██╗██╔══██╗██╔════╝$RC\n" +
+                            "${fg(34)}██████╔╝███████║██║██╔██╗██║░░░██║░░░██████╦╝███████║██║░░░░░██║░░░░░╚█████╗░░░░██║░░░██║░░██║██████╔╝█████╗░░$RC\n" +
+                            "${fg(34)}██╔═══╝░██╔══██║██║██║╚████║░░░██║░░░██╔══██╗██╔══██║██║░░░░░██║░░░░░░╚═══██╗░░░██║░░░██║░░██║██╔══██╗██╔══╝░░$RC\n" +
+                            "${fg(34)}██║░░░░░██║░░██║██║██║░╚███║░░░██║░░░██████╦╝██║░░██║███████╗███████╗██████╔╝░░░██║░░░╚█████╔╝██║░░██║███████╗$RC\n" +
+                            "${fg(34)}╚═╝░░░░░╚═╝░░╚═╝╚═╝╚═╝░░╚══╝░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═════╝░░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝╚══════╝$RC"
                 )
 
                 Thread.sleep(3000)
 
-                println("\nDas sind unsere derzeitigen Artikel:\n")
+                println("\n${U}Das sind unsere derzeitigen Artikel:$RC\n")
 
                 for (i in kategorie.artikel.indices){
                     println(kategorie.artikel[i].toString())
                 }
                 println()
-                var auswahlListe = listOf<String>("Filtern","Warenkorb","Auslogen")
-                println("Wählen sie anhand der Ziffern")
+                val auswahlListe = listOf<String>("Produkte Filtern","Warenkorb","Auslogen")
+                println("Wählen sie anhand der ${U}Ziffern$RC")
                 for (i in auswahlListe.indices){
                     println("[${i+1}] ${auswahlListe[i]}")
                 }
 
-                var aInput = readln().toInt()
+                val aInput = readln().toInt()
 
                 when (aInput){
-                    1 -> {filterMenue()} //ToDo fertigstellen
+                    1 -> {filterMenue(benutzername)} //ToDo fertigstellen
                     2 -> {warenkorb(benutzername)}
                     3 -> {acc.auslogen(benutzername)
                           loginRegister()}
@@ -114,12 +115,15 @@ class Paintballstore() {
             try {
                 val auswahlListe = mutableListOf<String>("zurück zum Menü")
                 println("\n" +
-                        "░██╗░░░░░░░██╗░█████╗░██████╗░███████╗███╗░░██╗██╗░░██╗░█████╗░██████╗░██████╗░\n" +
-                        "░██║░░██╗░░██║██╔══██╗██╔══██╗██╔════╝████╗░██║██║░██╔╝██╔══██╗██╔══██╗██╔══██╗\n" +
-                        "░╚██╗████╗██╔╝███████║██████╔╝█████╗░░██╔██╗██║█████═╝░██║░░██║██████╔╝██████╦╝\n" +
-                        "░░████╔═████║░██╔══██║██╔══██╗██╔══╝░░██║╚████║██╔═██╗░██║░░██║██╔══██╗██╔══██╗\n" +
-                        "░░╚██╔╝░╚██╔╝░██║░░██║██║░░██║███████╗██║░╚███║██║░╚██╗╚█████╔╝██║░░██║██████╦╝\n" +
-                        "░░░╚═╝░░░╚═╝░░╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝╚═╝░░╚══╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚═════╝░\n")
+                        "${fg(34)}░██╗░░░░░░░██╗░█████╗░██████╗░███████╗███╗░░██╗██╗░░██╗░█████╗░██████╗░██████╗░$RC\n" +
+                        "${fg(34)}░██║░░██╗░░██║██╔══██╗██╔══██╗██╔════╝████╗░██║██║░██╔╝██╔══██╗██╔══██╗██╔══██╗$RC\n" +
+                        "${fg(34)}░╚██╗████╗██╔╝███████║██████╔╝█████╗░░██╔██╗██║█████═╝░██║░░██║██████╔╝██████╦╝$RC\n" +
+                        "${fg(34)}░░████╔═████║░██╔══██║██╔══██╗██╔══╝░░██║╚████║██╔═██╗░██║░░██║██╔══██╗██╔══██╗$RC\n" +
+                        "${fg(34)}░░╚██╔╝░╚██╔╝░██║░░██║██║░░██║███████╗██║░╚███║██║░╚██╗╚█████╔╝██║░░██║██████╦╝$RC\n" +
+                        "${fg(34)}░░░╚═╝░░░╚═╝░░╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝╚═╝░░╚══╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚═════╝░$RC\n")
+
+
+
 
                 Thread.sleep(1000)
                 if (kunde(benutzername)!!.warenkorb.isNotEmpty()) {
@@ -133,7 +137,7 @@ class Paintballstore() {
                     auswahlListe.add("Bezahlen",)
                     auswahlListe.add("Produkt entfernen")
 
-                    println("Gesamtpreis $gesamtpreis€\n")
+                    println("\nGesamtpreis: $B%.2f€$RC\n".format(gesamtpreis))
                 }else{
                     println("Ihr Warenkorb ist leer\n")
                 }
@@ -163,12 +167,12 @@ class Paintballstore() {
            try {
                val auswahlListe= listOf<String>("Produkt entfernen","Zurück zum Warenkorb")
                println("\n" +
-                       "██████╗░██████╗░░█████╗░██████╗░██╗░░░██╗██╗░░██╗████████╗ ███████╗███╗░░██╗████████╗███████╗███████╗██████╗░███╗░░██╗███████╗███╗░░██╗\n" +
-                       "██╔══██╗██╔══██╗██╔══██╗██╔══██╗██║░░░██║██║░██╔╝╚══██╔══╝ ██╔════╝████╗░██║╚══██╔══╝██╔════╝██╔════╝██╔══██╗████╗░██║██╔════╝████╗░██║\n" +
-                       "██████╔╝██████╔╝██║░░██║██║░░██║██║░░░██║█████═╝░░░░██║░░░ █████╗░░██╔██╗██║░░░██║░░░█████╗░░█████╗░░██████╔╝██╔██╗██║█████╗░░██╔██╗██║\n" +
-                       "██╔═══╝░██╔══██╗██║░░██║██║░░██║██║░░░██║██╔═██╗░░░░██║░░░ ██╔══╝░░██║╚████║░░░██║░░░██╔══╝░░██╔══╝░░██╔══██╗██║╚████║██╔══╝░░██║╚████║\n" +
-                       "██║░░░░░██║░░██║╚█████╔╝██████╔╝╚██████╔╝██║░╚██╗░░░██║░░░ ███████╗██║░╚███║░░░██║░░░██║░░░░░███████╗██║░░██║██║░╚███║███████╗██║░╚███║\n" +
-                       "╚═╝░░░░░╚═╝░░╚═╝░╚════╝░╚═════╝░░╚═════╝░╚═╝░░╚═╝░░░╚═╝░░░ ╚══════╝╚═╝░░╚══╝░░░╚═╝░░░╚═╝░░░░░╚══════╝╚═╝░░╚═╝╚═╝░░╚══╝╚══════╝╚═╝░░╚══╝\n")
+                       "${fg(34)}██████╗░██████╗░░█████╗░██████╗░██╗░░░██╗██╗░░██╗████████╗ ███████╗███╗░░██╗████████╗███████╗███████╗██████╗░███╗░░██╗███████╗███╗░░██╗$RC\n" +
+                       "${fg(34)}██╔══██╗██╔══██╗██╔══██╗██╔══██╗██║░░░██║██║░██╔╝╚══██╔══╝ ██╔════╝████╗░██║╚══██╔══╝██╔════╝██╔════╝██╔══██╗████╗░██║██╔════╝████╗░██║$RC\n" +
+                       "${fg(34)}██████╔╝██████╔╝██║░░██║██║░░██║██║░░░██║█████═╝░░░░██║░░░ █████╗░░██╔██╗██║░░░██║░░░█████╗░░█████╗░░██████╔╝██╔██╗██║█████╗░░██╔██╗██║$RC\n" +
+                       "${fg(34)}██╔═══╝░██╔══██╗██║░░██║██║░░██║██║░░░██║██╔═██╗░░░░██║░░░ ██╔══╝░░██║╚████║░░░██║░░░██╔══╝░░██╔══╝░░██╔══██╗██║╚████║██╔══╝░░██║╚████║$RC\n" +
+                       "${fg(34)}██║░░░░░██║░░██║╚█████╔╝██████╔╝╚██████╔╝██║░╚██╗░░░██║░░░ ███████╗██║░╚███║░░░██║░░░██║░░░░░███████╗██║░░██║██║░╚███║███████╗██║░╚███║$RC\n" +
+                       "${fg(34)}╚═╝░░░░░╚═╝░░╚═╝░╚════╝░╚═════╝░░╚═════╝░╚═╝░░╚═╝░░░╚═╝░░░ ╚══════╝╚═╝░░╚══╝░░░╚═╝░░░╚═╝░░░░░╚══════╝╚═╝░░╚═╝╚═╝░░╚══╝╚══════╝╚═╝░░╚══╝$RC\n")
                     Thread.sleep(2000)
 
                println("Was möchten sie Erledigen")
@@ -221,6 +225,82 @@ class Paintballstore() {
     fun bezahlen(benutzername: String){
 
     }
-    fun filterMenue(){}
+    fun filterMenue(benutzername: String){
+        do {
+            try {
+                repeat(10){
+                    println()
+                }
+                println("${B}Was Möchten sie erledigen \nWählen sie anhand der Ziffern$RC\n")
 
+                val auswahlListe = listOf<String>("Nach Kategorie","Nach Produkt Kategorie","Nach Preis sortieren","Alphabetich Sotieren","Zurück")
+
+                for (i in auswahlListe.indices){
+                    println("[${i+1}] ${auswahlListe[i]}")
+                }
+                val aInput = readln().toInt()
+
+                when (aInput){
+
+                    1 ->{kategorie.filterUnterkategorien()
+                         produktWarenkorbhinzufügen(benutzername)}
+                    2 ->{kategorie.filterproduct()
+                         produktWarenkorbhinzufügen(benutzername)}
+                    3 ->{kategorie.sortPreis()
+                         produktWarenkorbhinzufügen(benutzername)}
+                    4 ->{kategorie.sortAlphabetischmarke()
+                         produktWarenkorbhinzufügen(benutzername)}
+                    5 ->{kundenMenue(benutzername)}
+                }
+
+
+
+            }catch (e:Exception){
+                println("Falsche eingabe Probieren sie es noch einmal")
+                continue
+            }
+
+        }while (true)
+    }
+
+    fun produktWarenkorbhinzufügen(benutzername: String){
+        do {
+            try {
+
+                var kunde = kunde(benutzername)!!.warenkorb
+                val auswahlListe = listOf<String>("Produkt auswählen","Zurück")
+                println("\n${B}Wählen sie aus anhand der Ziffern$RC")
+                for (i in auswahlListe.indices){
+                    println("[${i+1}] ${auswahlListe[i]}")
+                }
+                val aInput = readln().toInt()
+                when (aInput){
+                    1 -> {
+                        println("Wählen sie ihr Produkt anhand der Ziffer")
+                        val pInput = readln().toInt()-1
+                        println("\nSie haben Produkt: ${kategorie.artikel[pInput]} ausgewählt möchten sie es dem Warenkorb hinzufügen  Ja/Nein")
+                        val wHinput = readln().lowercase()
+
+                        when (wHinput){
+                            "ja"->{kunde(benutzername)!!.warenkorb.add(kategorie.artikel[pInput])
+                                   kategorie.artikel[pInput].anzahl-1
+                                   println("\nDas Produkt ${kategorie.artikel[pInput]} wurde ihrem Warenkorb hinzugefügt\n")
+                                continue
+                            }
+                            "nein"->{continue}
+                        }
+
+                    }
+                    2 -> {
+                        break
+                    }
+                }
+            }catch (e:Exception) {
+                println("Falsche eingabe Probieren sie es noch einmal")
+                continue
+            }
+        }while (true)
+
+
+    }
 }

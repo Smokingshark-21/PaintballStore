@@ -17,7 +17,7 @@ fun main(){
     t1.sortPreis()
 
 */
-    a.accountErstellen()
+//    a.accountErstellen()
 //    a.auslogen("admin")
-
+colorTest()
 }
