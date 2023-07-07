@@ -10,7 +10,7 @@ class Account() {
 
     val accountliste = mutableListOf<Konto>(
         Betreiber("admin",1997),
-        Kunde("max12@gmail.com","max",1912,"Payapal1")
+        Kunde("max12@gmail.com","max",1912,"Payapal")
     )
 
     var zahlungsMethodenliste = mutableListOf<String>("Payapal","Klaruna","Kredit-Debitkarte",)
