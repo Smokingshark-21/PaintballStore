@@ -5,7 +5,7 @@ import Kategorien.Unterkategorien.Artikel
 import Kategorien.Unterkategorien.Ausrüstung
 import Kategorien.Unterkategorien.Makierer
 import Kategorien.Unterkategorien.artikel.*
-import Kategorien.Unterkategorien.artikel.Magfed as Magfed
+
 
 
 class Kategorie() {

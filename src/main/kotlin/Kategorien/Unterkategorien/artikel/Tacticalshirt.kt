@@ -11,7 +11,17 @@ class Tacticalshirt(
     farbe:String,
     groeße:String,
     var kurz:Boolean): Ausrüstung(marke,name,preis,kundenrezesion,anzahl,farbe,groeße) {
+
+        fun kurzlang():String{
+            var armlänge = ""
+             if (kurz){
+                 armlänge = "Kurz"
+            }else{
+                armlänge = "Lang"
+            }
+            return armlänge
+        }
     override fun toString(): String {
-        return "$marke $name $preis€ $kundenrezesion $farbe $groeße $kurz"
+        return super.toString()+"Größe:$groeße Armlänge:${kurzlang()}"
     }
 }

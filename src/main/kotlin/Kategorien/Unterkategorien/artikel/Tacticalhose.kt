@@ -11,7 +11,18 @@ class Tacticalhose(
     farbe:String,
     groeße:String,
     var protektoren:Boolean): Ausrüstung(marke,name,preis,kundenrezesion,anzahl,farbe,groeße) {
+
+        fun pro():String{
+            var protek = ""
+
+            if (protektoren){
+                protek="Ja"
+            }else{
+                protek="Nein"
+            }
+            return protek
+        }
     override fun toString(): String {
-        return "$marke $name $preis€ $kundenrezesion $anzahl $farbe $groeße $protektoren "
+        return super.toString()+"Größe:$groeße Protektoren:${pro()}"
     }
 }

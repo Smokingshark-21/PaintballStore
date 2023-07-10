@@ -12,6 +12,6 @@ class Maske(
     groeße:String,
     var glasfarbe:String, ): Ausrüstung(marke,name,preis,kundenrezesion,anzahl,farbe,groeße) {
     override fun toString(): String {
-        return "$marke $name $preis€ $kundenrezesion $farbe $groeße $glasfarbe "
+        return super.toString()+"Größe:$groeße Glas Farbe:$glasfarbe"
     }
 }

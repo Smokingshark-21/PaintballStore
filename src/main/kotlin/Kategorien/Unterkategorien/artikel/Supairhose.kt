@@ -11,7 +11,17 @@ class Supairhose(
     farbe:String,
     groeße:String,
     var slide:Boolean, ): Ausrüstung(marke,name,preis,kundenrezesion,anzahl,farbe,groeße) {
+
+        fun slider():String{
+            var slider= ""
+            if (slide){
+                slider="Ja"
+            }else{
+                slider="Nein"
+            }
+            return slider
+        }
     override fun toString(): String {
-        return "$marke $name $preis€ $kundenrezesion $farbe $groeße $slide "
+        return super.toString()+"Größe:$groeße Slide Hose:${slider()} "
     }
 }

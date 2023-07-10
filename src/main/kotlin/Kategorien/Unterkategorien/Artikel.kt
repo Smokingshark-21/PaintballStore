@@ -8,5 +8,9 @@ open class Artikel(
     var anzahl:Int,
     var farbe:String) {
 
+    override fun toString(): String {
+        return "Marke:$marke Name:$name Preis:$preis€ Bewertung:$kundenrezesion Farbe:$farbe "
+    }
+
 
 }

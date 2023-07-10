@@ -12,6 +12,6 @@ class Magfed(
     kaliber:Int,
     var magazine:Int): Makierer(marke,name,preis,kundenrezesion,anzahl,farbe,kaliber) {
     override fun toString(): String {
-        return "$marke $name $preis€ $kundenrezesion $farbe $kaliber $magazine"
+        return super.toString()+"Kaliber:$kaliber Magazine:$magazine"
     }
 }

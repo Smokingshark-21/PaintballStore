@@ -1,7 +1,6 @@
 import ACC.Account
 import ACC.Acounts.Kunde
 import Kategorien.Kategorie
-import Kategorien.Unterkategorien.Artikel
 import Kategorien.Unterkategorien.artikel.*
 import kotlin.system.exitProcess
 
@@ -46,7 +45,7 @@ class Paintballstore() {
                     }
                     3 -> {
                         println("\nDas programm wurde geschlossen bis zum nächsten mal 🙂")
-                        break
+                        System.exit(0)
                     }
                 }
 
@@ -95,7 +94,6 @@ class Paintballstore() {
                 continue
             }
         }
-
 
     }
 
@@ -453,7 +451,6 @@ class Paintballstore() {
                            }
                        }
 
-
            }catch (e:Exception){
                println("Probieren sie es noch einmal")
                continue
@@ -654,7 +651,6 @@ class Paintballstore() {
                 continue
             }
         }while (true)
-
 
     }
 }
