@@ -1,5 +1,8 @@
 package Kategorien.Unterkategorien
 
+import Kategorien.Unterkategorien.artikel.RC
+import Kategorien.Unterkategorien.artikel.fg
+
 open class Artikel(
     var marke:String,
     var name:String,
@@ -9,7 +12,7 @@ open class Artikel(
     var farbe:String) {
 
     override fun toString(): String {
-        return "Marke:$marke Name:$name Preis:$preis€ Bewertung:$kundenrezesion Farbe:$farbe "
+        return "${fg(45)}Marke:$RC[$marke] ,${fg(51)}Name:$RC[$name] ,${fg(47)}Preis:$RC[$preis€] ,${fg(87)}Bewertung:$RC[$kundenrezesion von 100] ,${fg(123)}Farbe:$RC[$farbe] "
     }
 
 

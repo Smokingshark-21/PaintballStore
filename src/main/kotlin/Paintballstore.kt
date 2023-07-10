@@ -2,9 +2,8 @@ import ACC.Account
 import ACC.Acounts.Kunde
 import Kategorien.Kategorie
 import Kategorien.Unterkategorien.artikel.*
-import kotlin.system.exitProcess
 
-
+//ToDo Ui farben vlt table
 class Paintballstore() {
 
     var kategorie = Kategorie()
@@ -416,36 +415,44 @@ class Paintballstore() {
                            println("\nWelches Produkt möchten sie entfernen wählen sie anhand der Ziffer")
                            val pInput = readln().toInt()
 
-                           println("\nSind sie sicher das sie ${kunde(benutzername)!!.warenkorb[pInput - 1]} entfernen möchten\nJa/Nein\n")
+                           println("\nSind sie sicher das sie \n${kunde(benutzername)!!.warenkorb[pInput - 1]} entfernen möchten\nJa/Nein\n")
 
 
 
                            val chek = readln().lowercase()
 
                            when (chek) {
-                               "ja" -> {
+                               "ja","JA" -> {
 
                                    val i =kategorie.artikel.indexOf(kunde(benutzername)!!.warenkorb[pInput-1])
                                    kategorie.artikel[i].anzahl+=1
+                                   if (kategorie.artikel[i].kundenrezesion >=5)
+                                   kategorie.artikel[i].kundenrezesion-=5
+                                   println("${kunde(benutzername)!!.warenkorb[pInput - 1]} wurde entfernt aus ihrem Warenkorb")
 
                                    kunde(benutzername)!!.warenkorb.removeAt(pInput - 1)
 
-                                   println("${kunde(benutzername)!!.warenkorb[pInput - 1]} wurde entfernt aus ihrem Warenkorb")
 
 
 
+                                   if (kunde(benutzername)!!.warenkorb.isNotEmpty()) {
 
-                                   println("\nMöchten sie einen weiteren artikel entfernen Ja/nein")
-                                   val wInput = readln().lowercase()
-                                   when (wInput){
-                                       "ja" -> continue
-                                       "nein" -> {println("Zurück zum Warenkorb")
-                                                  Thread.sleep(1000)
-                                                  break}
+                                       println("\nMöchten sie einen weiteren artikel entfernen Ja/nein")
+                                       val wInput = readln().lowercase()
+                                       when (wInput) {
+                                           "ja", "JA" -> continue
+                                           "nein", "Nein" -> {
+                                               println("Zurück zum Warenkorb")
+                                               Thread.sleep(1000)
+                                               break
+                                           }
+                                       }
+                                   }else{
+                                       break
                                    }
                                }
 
-                               "nein" -> {
+                               "nein","NEIN" -> {
                                    continue
                                }
                            }
@@ -497,7 +504,7 @@ class Paintballstore() {
 
                                 println("sie werden zu ${kunde(benutzername)!!.zahlungsmethode} weitergeleitet.....")
                                 Thread.sleep(1000)
-                                repeat(5){ println() }
+                                repeat(5){println()}
 
                                 println("Willkommen bei ${kunde(benutzername)!!.zahlungsmethode}\n")
 
@@ -543,7 +550,7 @@ class Paintballstore() {
                                                     val index = kategorie.artikel.indexOf(kunde(benutzername)!!.warenkorb[bewertung-1])
                                                     println("\nwas für eine Bewertung geben sie ${kunde(benutzername)!!.warenkorb[bewertung-1]} von 1-10")
                                                     val beInput = readln().toInt()
-                                                    if (kategorie.artikel[index].kundenrezesion <= beInput){
+                                                    if (kategorie.artikel[index].kundenrezesion <= beInput && kategorie.artikel[index].kundenrezesion <= 100){
                                                         kategorie.artikel[index].kundenrezesion+=beInput
                                                     }
                                                     println("Vielen dank für ihre Bewertung")
@@ -629,7 +636,7 @@ class Paintballstore() {
                     1 -> {
                         println("Wählen sie ihr Produkt anhand der Ziffer")
                         val pInput = readln().toInt()-1
-                        println("\nSie haben Produkt: ${kategorie.artikel[pInput]} ausgewählt möchten sie es dem Warenkorb hinzufügen  Ja/Nein")
+                        println("\nSie haben Produkt: ${kategorie.artikel[pInput]} ausgewählt \nmöchten sie es dem Warenkorb hinzufügen  Ja/Nein")
                         val wHinput = readln().lowercase()
 
                         when (wHinput){

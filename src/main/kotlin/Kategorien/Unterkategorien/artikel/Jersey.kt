@@ -13,7 +13,7 @@ class Jersey(
     var aufschrift:String,): Ausrüstung(marke,name,preis,kundenrezesion,anzahl,farbe,groeße) {
 
     override fun toString(): String {
-       return super.toString()+"Größe:$groeße Aufschrift:$aufschrift"
+       return super.toString()+" ,Größe:[$groeße] ,Aufschrift:[$aufschrift]"
     }
 }
 

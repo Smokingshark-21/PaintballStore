@@ -1,6 +1,6 @@
 import ACC.Account
-import ACC.Acounts.Konto
 import Kategorien.*
+import Kategorien.Unterkategorien.artikel.colorTest
 
 fun main(){
 
@@ -19,5 +19,5 @@ fun main(){
 */
 //    a.accountErstellen()
 //    a.auslogen("admin")
-colorTest()
+    colorTest()
 }

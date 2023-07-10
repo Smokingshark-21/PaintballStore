@@ -22,6 +22,6 @@ class Tacticalshirt(
             return armlänge
         }
     override fun toString(): String {
-        return super.toString()+"Größe:$groeße Armlänge:${kurzlang()}"
+        return super.toString()+" ,Größe:[$groeße] ,Armlänge:[${kurzlang()}]"
     }
 }
