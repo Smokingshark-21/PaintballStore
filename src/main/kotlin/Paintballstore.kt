@@ -1,7 +1,7 @@
 import ACC.Account
 import ACC.Acounts.Kunde
 import Kategorien.Kategorie
-import Kategorien.Unterkategorien.artikel.*
+import Kategorien.Unterkategorien.Produkte.*
 
 //ToDo Ui farben vlt table
 class Paintballstore() {

@@ -1,7 +1,7 @@
 package Kategorien.Unterkategorien
 
-import Kategorien.Unterkategorien.artikel.RC
-import Kategorien.Unterkategorien.artikel.fg
+import Kategorien.Unterkategorien.Produkte.RC
+import Kategorien.Unterkategorien.Produkte.fg
 
 open class Artikel(
     var marke:String,

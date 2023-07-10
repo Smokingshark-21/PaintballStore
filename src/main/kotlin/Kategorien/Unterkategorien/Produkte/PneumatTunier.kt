@@ -1,4 +1,4 @@
-package Kategorien.Unterkategorien.artikel
+package Kategorien.Unterkategorien.Produkte
 
 import Kategorien.Unterkategorien.Makierer
 

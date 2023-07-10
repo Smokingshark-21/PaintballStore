@@ -1,6 +1,6 @@
 import ACC.Account
 import Kategorien.*
-import Kategorien.Unterkategorien.artikel.colorTest
+import Kategorien.Unterkategorien.Produkte.colorTest
 
 fun main(){
 
