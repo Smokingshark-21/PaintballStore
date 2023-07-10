@@ -1,7 +1,9 @@
 import ACC.Account
 import ACC.Acounts.Kunde
 import Kategorien.Kategorie
+import Kategorien.Unterkategorien.Artikel
 import Kategorien.Unterkategorien.artikel.*
+import kotlin.system.exitProcess
 
 
 class Paintballstore() {
@@ -14,7 +16,7 @@ class Paintballstore() {
         do {
             try {
 
-                val auswahlListe = listOf<String>("Login", "Registrieren")
+                val auswahlListe = listOf<String>("Login", "Registrieren","Programm Schließen")
 
                 println("Wähle sie anhand der Ziffern aus\n")
                 for (i in auswahlListe.indices) {
@@ -31,7 +33,7 @@ class Paintballstore() {
                             if (i.eingelogt) {
 
                                 if (i.isAdmin){
-                                    adminMenue(i.benutzername) //ToDo Fertigstellen
+                                    adminMenue(i.benutzername)
                                 }else {
                                     kundenMenue(i.benutzername)
                                 }
@@ -41,6 +43,10 @@ class Paintballstore() {
                     2 -> {
                         acc.accountErstellen()
                         continue
+                    }
+                    3 -> {
+                        println("\nDas programm wurde geschlossen bis zum nächsten mal 🙂")
+                        break
                     }
                 }
 
@@ -77,9 +83,10 @@ class Paintballstore() {
 
                 when (aIput){
                     1 ->{produktHinzufuegen()}
-                    2 ->{produktEntfernen()} // ToDo anfangen
-                    3 ->{warenBestand()} // Todo anfangen
+                    2 ->{produktEntfernen()}
+                    3 ->{warenBestand()} //
                     4 ->{acc.auslogen(benutzername)
+                        loginRegister()
                          break}
                 }
 
@@ -208,9 +215,85 @@ class Paintballstore() {
         }
     }
 
-    fun produktEntfernen(){}
+    fun produktEntfernen(){
+        while (true) {
+            try {
 
-    fun warenBestand(){}
+                println()
+                kategorie.filterUnterkategorien()
+                println("\nwählen sie anhand der ziffer welches produkt sie entfernen möchten\n401 zurück zum Hauptmenü")
+                val eInput = readln().toInt()
+
+                when (eInput){
+                    401 -> break
+                }
+
+                println("Möchten sie ${kategorie.artikel[eInput-1]} entfernen Ja/Nein")
+                val jNinput = readln().lowercase()
+
+                when (jNinput){
+                    "ja" -> {
+                        kategorie.artikel.removeAt(eInput-1)
+                        println("das Produkt wurde erfolgreich entfernt\nMöchten sie einen weiteren Entfernen Ja/Nein?")
+                        val wInput = readln().lowercase()
+
+                        when (wInput){
+                            "ja" -> continue
+                            "nein" -> break
+                        }
+                    }
+                    "nein" -> {continue}
+                }
+
+            }catch (e:Exception){
+                println("Probieren sie es noch einmal")
+                continue
+            }
+
+        }
+    }
+
+    fun warenBestand(){
+        while (true){
+            try {
+
+                for (i in kategorie.artikel){
+                    val index = kategorie.artikel.indexOf(i)
+                    println("[${index+1}] Marke: ${i.marke} Name: ${i.name} Preis: ${i.preis} Anzahl: ${i.anzahl}")
+                }
+                println("\nWählen sie anhand der Ziffer um den warenbestand zu erneuern\n401 zurück zum Hauptmenü")
+                val wInput = readln().toInt()
+
+                when (wInput){
+                    401 -> break
+                }
+
+                println("Sie haben ${kategorie.artikel[wInput-1].name} ausgewählt mit Warenbestand: ${kategorie.artikel[wInput-1].anzahl} ist das Richtig Ja/Nein")
+                val jNInput = readln().lowercase()
+
+                when (jNInput) {
+                    "ja" -> {
+                        println("Geben sie den Neuen Warenbestand ein")
+                        val wBinput = readln().toInt()
+                        kategorie.artikel[wInput-1].anzahl=wBinput
+                        println("Der Warenbestand von Produkt ${kategorie.artikel[wInput-1].name} wurde auf ${kategorie.artikel[wInput-1].anzahl} gesetzt\nWeiteres Produkt Bearbeiten Ja/Nein")
+                        val wPinput = readln().lowercase()
+                        when (wPinput){
+                            "ja" -> {continue}
+                            "nein" -> {break}
+                        }
+
+                    }
+                    "nein" -> {
+                        continue
+                    }
+                }
+            }catch (e:Exception){
+                println("Probieren sie es noch einmal")
+                continue
+            }
+        }
+    }
 
     fun kundenMenue(benutzername:String) {
 
@@ -246,6 +329,7 @@ class Paintballstore() {
                     1 -> {filterMenue(benutzername)}
                     2 -> {warenkorb(benutzername)}
                     3 -> {acc.auslogen(benutzername)
+                          loginRegister()
                           break}
                 }
             }catch (e:Exception){
@@ -472,10 +556,14 @@ class Paintballstore() {
                                                 "nein" ->{kunde(benutzername)!!.warenkorb.clear()
                                                           break}
                                             }
-                                        }"nein" -> {
+                                        }
+                                        "nein" -> {
                                                     println("Sie werden zum PaintballStore zurück geleitet")
                                                     break}
                                     }
+                                }else{
+                                    println("einlogen bei ihrem Zahlungsanbieter ist fehlgeschlagen")
+                                    continue
                                 }
 
                             }

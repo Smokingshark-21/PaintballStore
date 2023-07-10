@@ -27,7 +27,7 @@ class Account() {
 
 
                 println("Geben sie ihr Passwort ein")
-                var pInput = readln().toInt()
+                val pInput = readln().toInt()
 
 
 
@@ -82,7 +82,7 @@ class Account() {
                 println("Wilkommen bei der Erstellung ihren Kontos\n")
 
                 println("Geben sie ihr alter ein")
-                var ageInput = readln().toInt()
+                val ageInput = readln().toInt()
 
                 if (ageInput < 12){
                     println("Registrieren nicht möglich")
@@ -124,7 +124,7 @@ class Account() {
                     for (i in zahlungsMethodenliste.indices){
                         println("[${i+1}] ${zahlungsMethodenliste[i]}")
                     }
-                    var zInput = readln().toInt()
+                    val zInput = readln().toInt()
 
                     when (zInput){
                         1 -> {println("Sie haben erfolgreich ${zahlungsMethodenliste[0]} ausgewählt als ihre Zahlungsmethode")
