@@ -306,7 +306,7 @@ class Paintballstore() {
                             "${fg(34)}╚═╝░░░░░╚═╝░░╚═╝╚═╝╚═╝░░╚══╝░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═════╝░░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝╚══════╝$RC"
                 )
 
-                Thread.sleep(3000)
+                /*Thread.sleep(3000)*/
 
                 println("\n${U}Das sind unsere derzeitigen Artikel:$RC\n")
 
@@ -377,7 +377,9 @@ class Paintballstore() {
                     auswahlListe.add("Bezahlen",)
                     auswahlListe.add("Produkt entfernen")
 
-                    println("\nGesamtpreis: $B%.2f€$RC\n".format(gesamtpreis))
+                    println("\n--------------------")
+                    println("Gesamtpreis: $B%.2f€$RC".format(gesamtpreis))
+                    println("--------------------\n")
                 }else{
                     println("Ihr Warenkorb ist leer\n")
                 }

@@ -12,7 +12,13 @@ open class Artikel(
     var farbe:String) {
 
     override fun toString(): String {
-        return "${fg(45)}Marke:$RC[$marke] ,${fg(51)}Name:$RC[$name] ,${fg(47)}Preis:$RC[$preis€] ,${fg(87)}Bewertung:$RC[$kundenrezesion von 100] ,${fg(123)}Farbe:$RC[$farbe] "
+        var first = "|${fg(45)}Marke:$RC[$marke]".padEnd(37)
+        first+="|${fg(51)}Name:$RC[$name]".padEnd(40)
+        first+="|${fg(47)}Preis:$RC[$preis€]".padEnd(30)
+        first+="|${fg(87)}Bewertung:$RC[$kundenrezesion von 100]".padEnd(40)
+        first+="|${fg(123)}Farbe:$RC[$farbe]".padEnd(28)
+        return  first
+
     }
 
 
