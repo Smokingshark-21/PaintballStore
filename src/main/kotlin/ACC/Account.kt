@@ -13,7 +13,7 @@ class Account() {
         Kunde("max12@gmail.com","max",1912,"Payapal")
     )
 
-    var zahlungsMethodenliste = mutableListOf<String>("Payapal","Klaruna","Kredit-Debitkarte",)
+    var zahlungsMethodenliste = mutableListOf<String>("Payapal","Klaruna","Sofort überweisung",)
 
 
     fun einlogen(){
@@ -119,38 +119,8 @@ class Account() {
 
                 }while (true)
 
-                do {
-                    println("Wählen sie eine zahlungsmethode aus anhand der ziffer\n")
-                    for (i in zahlungsMethodenliste.indices){
-                        println("[${i+1}] ${zahlungsMethodenliste[i]}")
-                    }
-                    val zInput = readln().toInt()
+                zahlungsMehtode=zahlungsmethode()
 
-                    when (zInput){
-                        1 -> {println("Sie haben erfolgreich ${zahlungsMethodenliste[0]} ausgewählt als ihre Zahlungsmethode")
-                            zahlungsMehtode = zahlungsMethodenliste[0]
-                            break
-                        }
-                        2 -> {println("Sie haben erfolgreich ${zahlungsMethodenliste[1]} ausgewählt als ihre Zahlungsmethode")
-                            zahlungsMehtode = zahlungsMethodenliste[1]
-                            break
-                        }
-                        3 -> {println("Sie haben erfolgreich ${zahlungsMethodenliste[2]} ausgewählt als ihre Zahlungsmethode")
-                            zahlungsMehtode = zahlungsMethodenliste[2]
-                            break
-                        }
-                        4 -> {
-                            println("Sie haben erfolgreich ${zahlungsMethodenliste[3]} ausgewählt als ihre Zahlungsmethode")
-                            zahlungsMehtode = zahlungsMethodenliste[3]
-                            break
-                        }
-                        5 -> {
-                            println("Sie haben erfolgreich ${zahlungsMethodenliste[4]} ausgewählt als ihre Zahlungsmethode")
-                            zahlungsMehtode = zahlungsMethodenliste[4]
-                            break
-                        }
-                    }
-                }while (true)
 
                 accountliste.add(Kunde(email,benutzerName,passwort,zahlungsMehtode))
                 println("Ihr Konto wurde erfolgreich angelegt")
@@ -162,5 +132,43 @@ class Account() {
             }
         }while (true)
 
+    }
+
+    fun zahlungsmethode():String{
+        var zahlungsMehtode = ""
+        do {
+            println("Wählen sie eine zahlungsmethode aus anhand der ziffer\n")
+            for (i in zahlungsMethodenliste.indices){
+                println("[${i+1}] ${zahlungsMethodenliste[i]}")
+            }
+            val zInput = readln().toInt()
+
+            when (zInput){
+                1 -> {println("Sie haben erfolgreich ${zahlungsMethodenliste[0]} ausgewählt als ihre Zahlungsmethode")
+                    zahlungsMehtode = zahlungsMethodenliste[0]
+                    break
+                }
+                2 -> {println("Sie haben erfolgreich ${zahlungsMethodenliste[1]} ausgewählt als ihre Zahlungsmethode")
+                    zahlungsMehtode = zahlungsMethodenliste[1]
+                    break
+                }
+                3 -> {println("Sie haben erfolgreich ${zahlungsMethodenliste[2]} ausgewählt als ihre Zahlungsmethode")
+                    zahlungsMehtode = zahlungsMethodenliste[2]
+                    break
+                }
+                4 -> {
+                    println("Sie haben erfolgreich ${zahlungsMethodenliste[3]} ausgewählt als ihre Zahlungsmethode")
+                    zahlungsMehtode = zahlungsMethodenliste[3]
+                    break
+                }
+                5 -> {
+                    println("Sie haben erfolgreich ${zahlungsMethodenliste[4]} ausgewählt als ihre Zahlungsmethode")
+                    zahlungsMehtode = zahlungsMethodenliste[4]
+                    break
+                }
+            }
+        }while (true)
+
+        return zahlungsMehtode
     }
 }

@@ -23,6 +23,7 @@ class Tacticalhose(
             return protek
         }
     override fun toString(): String {
-        return super.toString()+" Größe:[$groeße] ,Protektoren:[${pro()}]"
+        return super.toString()+"|${fg(14)}Größe:$RC[$groeße]".padEnd(31) +
+                "|${fg(33)}Protektoren:$RC[${pro()}]"
     }
 }

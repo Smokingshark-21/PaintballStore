@@ -16,7 +16,7 @@ open class Artikel(
         first+="|${fg(51)}Name:$RC[$name]".padEnd(40)
         first+="|${fg(47)}Preis:$RC[$preis€]".padEnd(30)
         first+="|${fg(87)}Bewertung:$RC[$kundenrezesion von 100]".padEnd(40)
-        first+="|${fg(123)}Farbe:$RC[$farbe]".padEnd(28)
+        first+="|${fg(123)}Farbe:$RC[$farbe]".padEnd(33)
         return  first
 
     }

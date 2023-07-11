@@ -22,6 +22,7 @@ class Supairhose(
             return slider
         }
     override fun toString(): String {
-        return super.toString()+" ,Größe:[$groeße] ,Slide Hose:[${slider()}]"
+        return super.toString()+"|${fg(14)}Größe:$RC[$groeße]".padEnd(31) +
+                "|${fg(33)}Slide Hose:$RC[${slider()}]"
     }
 }

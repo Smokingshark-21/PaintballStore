@@ -12,6 +12,7 @@ class PneumatTunier(
     kaliber:Int,
     var schussprosekunde:Int): Makierer(marke,name,preis,kundenrezesion,anzahl,farbe,kaliber) {
     override fun toString(): String {
-        return super.toString()+" ,Kaliber:[$kaliber] ,Schuss pro Sekunde:[$schussprosekunde]"
+        return super.toString()+"|${fg(14)}Kaliber:$RC[$kaliber]".padEnd(31) +
+                "|${fg(33)}Schuss pro Sekunde:$RC[$schussprosekunde]"
     }
 }

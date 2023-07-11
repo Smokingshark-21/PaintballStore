@@ -3,7 +3,7 @@ import ACC.Acounts.Kunde
 import Kategorien.Kategorie
 import Kategorien.Unterkategorien.Produkte.*
 
-//ToDo Ui farben vlt table
+
 class Paintballstore() {
 
     var kategorie = Kategorie()
@@ -70,7 +70,7 @@ class Paintballstore() {
                         "${fg(34)}░░╚██╔╝░░███████╗██║░░██║░░╚██╔╝░╚██╔╝░██║░░██║███████╗░░░██║░░░╚██████╔╝██║░╚███║╚██████╔╝$RC\n" +
                         "${fg(34)}░░░╚═╝░░░╚══════╝╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝░░╚═╝╚══════╝░░░╚═╝░░░░╚═════╝░╚═╝░░╚══╝░╚═════╝░$RC")
 
-                val aListe = listOf<String>("Produkt hinzufügen","Produkt entfernen","Warenbestand","Auslogen")
+                val aListe = listOf<String>("Produkt hinzufügen","Produkt entfernen","Warenbestand","Bezahlmethoden bearbeiten","Auslogen")
                 println("Was möchten sie erledigen wählen sie anhand der Ziffern")
 
                 for (i in aListe.indices){
@@ -83,7 +83,8 @@ class Paintballstore() {
                     1 ->{produktHinzufuegen()}
                     2 ->{produktEntfernen()}
                     3 ->{warenBestand()} //
-                    4 ->{acc.auslogen(benutzername)
+                    4 ->{bezahlMethode()}
+                    5 ->{acc.auslogen(benutzername)
                         loginRegister()
                          break}
                 }
@@ -292,6 +293,94 @@ class Paintballstore() {
         }
     }
 
+    fun bezahlMethode(){
+       while (true) {
+           try {
+                var count = 0
+               println("Die derzeitigen Bezahlmethoden\n")
+               for (i in acc.zahlungsMethodenliste.indices) {
+                   println(acc.zahlungsMethodenliste[i])
+                   count++
+               }
+
+               val list = mutableListOf<String>(
+                   "Zurück zum Hauptmenü",
+                   "Bezahlmethode Entfernen"
+               )
+
+               if (count <= 4){
+                   list.add("Bezahlmethode hinzufügen")
+               }else{
+                   println("Es sind Maximal 5 Zahlungsmethoden erlaubt")
+               }
+
+
+               println("\n Wählen sie anhand der Ziffern")
+               for (i in list.indices) {
+                   println("[${i + 1}] ${list[i]}")
+               }
+               val aInput = readln().toInt()
+
+               when (aInput) {
+                   1 -> {break}
+                   2 -> {
+                       while (true){
+                           try {
+
+                               println("Welche Zahlungsmethode möchten sie entfernen wählen sie anhand der Ziffer")
+                               for (i in acc.zahlungsMethodenliste.indices){
+                                   println("[${i+1}] ${acc.zahlungsMethodenliste[i]}")
+                               }
+
+                               val eInput = readln().toInt()
+
+                               println("Möchten sie Wirklich ${acc.zahlungsMethodenliste[eInput-1]} entfernen Ja/Nein")
+
+                               val safty = readln().lowercase()
+
+                               when (safty){
+                                   "ja"-> {
+                                       println("${acc.zahlungsMethodenliste[eInput-1]} wurde Entfernt")
+                                       acc.zahlungsMethodenliste.removeAt(eInput-1)
+                                       break
+                                   }
+                                   "nein"-> {break}
+                               }
+
+                           }catch (e:Exception){
+                               println("Probieren sie es noch einmal")
+                               continue
+                           }
+                       }
+
+
+                   }
+                   3 -> {
+                       while (true) {
+                           try {
+                               println("Was für eine Bezahlmethode möchten sie hinzufügen?")
+                               val mInput = readln()
+                               acc.zahlungsMethodenliste.add(mInput)
+                               println("Die Zahlungsmethode $mInput wurde erfolgreich hinzugefügt")
+                               break
+
+                           } catch (e: Exception) {
+                               println("Probieren sie es noch einmal")
+                               continue
+                           }
+                       }
+                   }
+               }
+
+
+           } catch (e: Exception){
+           println("Probieren sie es noch einmal")
+           continue
+           }
+       }
+
+    }
+
     fun kundenMenue(benutzername:String) {
 
         while (true) {
@@ -306,12 +395,14 @@ class Paintballstore() {
                             "${fg(34)}╚═╝░░░░░╚═╝░░╚═╝╚═╝╚═╝░░╚══╝░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═════╝░░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝╚══════╝$RC"
                 )
 
-                /*Thread.sleep(3000)*/
+                Thread.sleep(3000)
 
-                println("\n${U}Das sind unsere derzeitigen Artikel:$RC\n")
+                println("\n${U}Das sind unsere derzeitigen best bewerten Artikel:$RC\n")
 
-                for (i in kategorie.artikel.indices){
-                    println(kategorie.artikel[i].toString())
+                for (i in kategorie.artikel){
+                    val index = kategorie.artikel.indexOf(i)
+                    if (i.kundenrezesion >= 90)
+                    println(kategorie.artikel[index].toString())
                 }
                 println()
                 val auswahlListe = listOf<String>("Produkte Filtern","Warenkorb","Auslogen")
@@ -550,7 +641,7 @@ class Paintballstore() {
                                                     }
                                                     val bewertung = readln().toInt()
                                                     val index = kategorie.artikel.indexOf(kunde(benutzername)!!.warenkorb[bewertung-1])
-                                                    println("\nwas für eine Bewertung geben sie ${kunde(benutzername)!!.warenkorb[bewertung-1]} von 1-10")
+                                                    println("\nwas für eine Bewertung geben sie ${kunde(benutzername)!!.warenkorb[bewertung-1].name} von 1-100")
                                                     val beInput = readln().toInt()
                                                     if (kategorie.artikel[index].kundenrezesion <= beInput && kategorie.artikel[index].kundenrezesion <= 100){
                                                         kategorie.artikel[index].kundenrezesion+=beInput
@@ -564,7 +655,6 @@ class Paintballstore() {
                                             }
                                         }
                                         "nein" -> {
-                                                    println("Sie werden zum PaintballStore zurück geleitet")
                                                     break}
                                     }
                                 }else{
@@ -576,6 +666,9 @@ class Paintballstore() {
                             2-> {break}
                         }
                     }
+                    "nein"->{println("Zahlungsmethode Anpassen")
+                        kunde(benutzername)!!.zahlungsmethode= acc.zahlungsmethode()
+                    continue}
                 }
 
 
@@ -590,9 +683,7 @@ class Paintballstore() {
     fun filterMenue(benutzername: String){
         do {
             try {
-                repeat(10){
-                    println()
-                }
+
                 println("${B}Was Möchten sie erledigen \nWählen sie anhand der Ziffern$RC\n")
 
                 val auswahlListe = listOf<String>("Nach Kategorie","Nach Produkt Kategorie","Nach Preis sortieren","Alphabetich Sotieren","Zurück")
@@ -638,13 +729,13 @@ class Paintballstore() {
                     1 -> {
                         println("Wählen sie ihr Produkt anhand der Ziffer")
                         val pInput = readln().toInt()-1
-                        println("\nSie haben Produkt: ${kategorie.artikel[pInput]} ausgewählt \nmöchten sie es dem Warenkorb hinzufügen  Ja/Nein")
+                        println("\nSie haben Produkt: ${kategorie.artikel[pInput].name} ausgewählt \nmöchten sie es dem Warenkorb hinzufügen  Ja/Nein")
                         val wHinput = readln().lowercase()
 
                         when (wHinput){
                             "ja"->{kunde(benutzername)!!.warenkorb.add(kategorie.artikel[pInput])
                                    kategorie.artikel[pInput].anzahl-=1
-                                   println("\nDas Produkt ${kategorie.artikel[pInput]} wurde ihrem Warenkorb hinzugefügt\n")
+                                   println("\nDas Produkt ${kategorie.artikel[pInput].name} wurde ihrem Warenkorb hinzugefügt\n")
                                 continue
                             }
                             "nein"->{continue}

@@ -17,17 +17,17 @@ class Kategorie() {
         Supairhose("Dye","LT Pan",139.95,5,20,"Weiß","Xl",true),
         Jersey("Mayhem","Camo B/C",69.95,3,30,"Schwarz","XL","Mayhem"),
         Jersey("Valken","V-Tac Zulu V-Cam",57.17,3,10,"Flecktarn","XS","/"),
-        Tacticalhose("Delta Six","Spec-Ops",89.95,4,30,"Multicam","XXL",true),
+        Tacticalhose("Delta Six","Spec-Ops",89.95,95,30,"Multicam","XXL",true),
         Tacticalhose("Invader Gear","Feldhose",87.99,3,20,"Flecktarn","M",false),
         Tacticalshirt("Helikon-Tex","MCDU Combat",59.90,5,100,"Flecktarn","XL",false),
         Tacticalshirt("Defcon 5","Lycra Combat",41.89,3,120,"Multicam","M",false),
-        Magfed("Rap4","468",800.0,5,10,"Schwarz",68,5),
+        Magfed("Rap4","468",800.0,95,10,"Schwarz",68,5),
         PneumatTunier("Planet Eclipse","ETHA 3",599.95,5,100,"Schwarz",68,15)
     )
 
     fun filterUnterkategorien() {
 
-        print("Ausrüstung\n")
+        print("\nAusrüstung\n")
         for (i in artikel){
             if (i is Ausrüstung) {
                 val j = artikel.indexOf(i)
@@ -35,8 +35,7 @@ class Kategorie() {
             }
             else continue
         }
-        println()
-        print("Makierer\n")
+        print("\nMakierer\n")
         for (i in artikel) {
             if (i is Makierer) {
                 val j = artikel.indexOf(i)
