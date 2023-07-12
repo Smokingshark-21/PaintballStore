@@ -10,7 +10,7 @@ class Account() {
 
     val accountliste = mutableListOf<Konto>(
         Betreiber("admin",1997),
-        Kunde("max12@gmail.com","max",1912,"Payapal")
+        Kunde("max12@gmail.com","max",1815,"Payapal")
     )
 
     var zahlungsMethodenliste = mutableListOf<String>("Payapal","Klaruna","Sofort überweisung",)
@@ -56,7 +56,7 @@ class Account() {
         for (i in accountliste)
                 if (i.benutzername == input && i.passwort == passwort){
                     ceckBenutzerpasswort = true
-                    i.eingelogt=true
+                    i.eingeloggt=true
                 }
 
         return ceckBenutzerpasswort
@@ -64,7 +64,7 @@ class Account() {
     fun auslogen(benutzername:String){
         for (i in accountliste){
             if (i.benutzername == benutzername){
-                i.eingelogt = false
+                i.eingeloggt = false
             }
         }
     }

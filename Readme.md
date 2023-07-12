@@ -1,33 +1,32 @@
+
 <h1 align="center">PaintballStore</h1>
-<h2 align="center">Ein kleines Übungs Projekt </h2>
 <h6 align="center">by Max Brockauf</h6>
 
-<details>
-<summary>Klassen</summary>
-<details>
-<summary>Kategorien</summary>
-<details>
-<summary>Unterkategorie</summary>
-<details>
-<summary>Artikel</summary>
+<p align="center"> <img  src="Klasendiagramm.jpg"> </p>
 
-</details>
-<details>
-<summary>Ausrüstung</summary>
+# Beschreibung 
 
-</details>
-<details>
-<summary>Makierer</summary>
+Starten Sie das Programm, indem sie in der Main.kt ihre Konsole starten.
 
-</details>
-<details>
-<summary>Produkte</summary>
-<details>
-<summary>Jersey</summary>
-Diese Klasse ist für ein Produkt
-sie erbt von Ausrüstung
-</details>
-</DETAILS>
-</details>
-</details>
-</details>
+Sobald sie das Programm gestartet haben können, sie sich einloggen oder registrieren, beim Einloggen gibt es derzeit 2 Accounts, ein Admin und ein Kunden-Account.
+
+---
+
+Admin ACC
+
+Benutzername: admin
+
+Passwort: 1997
+
+Dient zu Verwaltung des Stores, z. B. Warenbestand anpassen oder Produkte hinzufügen – entfernen.
+
+---
+Kunden ACC 
+
+Benutzername: max
+
+Passwort: 1815
+
+Normaler Kunden-Account um den Store zu nutzen um z. B. Waren zu filtern und oder in den Warenkorb zu packen und simuliert zu bezahlen.
+
+Login für die Zahlungsmethode ist der Benutzername und das Passwort.

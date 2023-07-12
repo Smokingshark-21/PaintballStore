@@ -8,7 +8,7 @@ class Kunde(
         benutzername:String,
         passwort:Int,
     var zahlungsmethode:String,
-):Konto(benutzername,passwort, isAdmin =false, eingelogt = false){
+):Konto(benutzername,passwort, isAdmin =false, eingeloggt = false){
 
 
     var warenkorb= mutableListOf<Artikel>()

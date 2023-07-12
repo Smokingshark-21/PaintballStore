@@ -3,7 +3,7 @@ package Kategorien
 
 import Kategorien.Unterkategorien.Artikel
 import Kategorien.Unterkategorien.Ausrüstung
-import Kategorien.Unterkategorien.Makierer
+import Kategorien.Unterkategorien.Markierer
 import Kategorien.Unterkategorien.Produkte.*
 
 
@@ -16,7 +16,7 @@ class Kategorie() {
         Supairhose("Planet Eclipse","Program Pant FANTM",149.95,5,30,"Schwarz","L",false),
         Supairhose("Dye","LT Pan",139.95,5,20,"Weiß","Xl",true),
         Jersey("Mayhem","Camo B/C",69.95,3,30,"Schwarz","XL","Mayhem"),
-        Jersey("Valken","V-Tac Zulu V-Cam",57.17,3,10,"Flecktarn","XS","/"),
+        Jersey("Valken","V-Tac Zulu V-Cam",57.17,3,4,"Flecktarn","XS","/"),
         Tacticalhose("Delta Six","Spec-Ops",89.95,95,30,"Multicam","XXL",true),
         Tacticalhose("Invader Gear","Feldhose",87.99,3,20,"Flecktarn","M",false),
         Tacticalshirt("Helikon-Tex","MCDU Combat",59.90,5,100,"Flecktarn","XL",false),
@@ -35,9 +35,9 @@ class Kategorie() {
             }
             else continue
         }
-        print("\nMakierer\n")
+        print("\nMarkierer\n")
         for (i in artikel) {
-            if (i is Makierer) {
+            if (i is Markierer) {
                 val j = artikel.indexOf(i)
                 println("[${j + 1}] ${artikel[j].toString()}")
             }
@@ -45,10 +45,10 @@ class Kategorie() {
 
     }
 
-    fun filterproduct(){
+    fun filterProduct(){
 
 
-                    println("\nMagfed Makierer")
+                    println("\nMagfed Markierer")
                     for (i in artikel){
                         if (i is Magfed){
                             val j = artikel.indexOf(i)
@@ -56,7 +56,7 @@ class Kategorie() {
                         }
                     }
 
-                    println("\nPneumatTunier Makierer")
+                    println("\nPneumatTunier Markierer")
                     for (i in artikel){
                         if (i is PneumatTunier){
                             val j = artikel.indexOf(i)

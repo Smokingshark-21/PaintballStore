@@ -1,6 +1,6 @@
 package Kategorien.Unterkategorien
 
-open class Makierer(
+open class Markierer(
     marke:String,
     name:String,
     preis:Double,

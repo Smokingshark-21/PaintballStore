@@ -28,7 +28,7 @@ class Paintballstore() {
                         acc.einlogen()
                         for (i in acc.accountliste)
 
-                            if (i.eingelogt) {
+                            if (i.eingeloggt) {
 
                                 if (i.isAdmin){
                                     adminMenue(i.benutzername)
@@ -116,9 +116,9 @@ class Paintballstore() {
                 println("um was für ein Artikel handelt es sich")
                 val artikelList = listOf<String>(
                     "Jersey",
-                    "Magfed Makierer",
+                    "Magfed Markierer",
                     "Maske",
-                    "Pneumat-Tunier Makierer",
+                    "Pneumat-Tunier Markierer",
                     "Supair Hose",
                     "Tactical Hose",
                     "Tactical Shirt"
@@ -141,9 +141,9 @@ class Paintballstore() {
                     }
 
                     2 -> {
-                        println("Was für ein Kaliber hat der Makierer?")
+                        println("Was für ein Kaliber hat der Markierer?")
                         val kInput = readln().toInt()
-                        println("Wie viele Magazine hat der Makierer?")
+                        println("Wie viele Magazine hat der Markierer?")
                         val maInput = readln().toInt()
 
                         kategorie.artikel.add(Magfed(mInput, nInput, pInput, 0, lInput, fInput, kInput, maInput))
@@ -163,7 +163,7 @@ class Paintballstore() {
                     }
 
                     4 -> {
-                        println("Was für ein Kaliber hat der Makierer?")
+                        println("Was für ein Kaliber hat der Markierer?")
                         val kInput = readln().toInt()
                         println("Wie Schnell kann er pro sekunde ein paintball abfeuern?")
                         val maInput = readln().toInt()
@@ -257,7 +257,11 @@ class Paintballstore() {
 
                 for (i in kategorie.artikel){
                     val index = kategorie.artikel.indexOf(i)
-                    println("[${index+1}] Marke: ${i.marke} Name: ${i.name} Preis: ${i.preis} Anzahl: ${i.anzahl}")
+                    if (i.anzahl <=5 ){
+                        println("[${index+1}] Marke: ${i.marke} Name: ${i.name} Preis: ${i.preis} ${bg(196)}${U}Anzahl:${i.anzahl}$RC")
+                    }
+                    else{println("[${index+1}] Marke: ${i.marke} Name: ${i.name} Preis: ${i.preis} Anzahl:${i.anzahl}")}
+
                 }
                 println("\nWählen sie anhand der Ziffer um den warenbestand zu erneuern\n401 zurück zum Hauptmenü")
                 val wInput = readln().toInt()
@@ -607,7 +611,7 @@ class Paintballstore() {
                                 val passw = readln().toInt()
 
                                 if (bname == kunde(benutzername)!!.benutzername && passw == kunde(benutzername)!!.passwort){
-                                    println("Sie sind erfolgreich bei ${kunde(benutzername)!!.zahlungsmethode} Eingelogt\n")
+                                    println("Sie sind erfolgreich bei ${kunde(benutzername)!!.zahlungsmethode} eingeloggt\n")
                                     println("betrag von $B%.2f€$RC bezahlen Ja/Nein".format(preis))
                                     val bezInput = readln().lowercase()
                                     when(bezInput){
@@ -697,7 +701,7 @@ class Paintballstore() {
 
                     1 ->{kategorie.filterUnterkategorien()
                          produktWarenkorbhinzufuegen(benutzername)}
-                    2 ->{kategorie.filterproduct()
+                    2 ->{kategorie.filterProduct()
                          produktWarenkorbhinzufuegen(benutzername)}
                     3 ->{kategorie.sortPreis()
                          produktWarenkorbhinzufuegen(benutzername)}
