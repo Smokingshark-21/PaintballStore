@@ -7,6 +7,4 @@ open class Markierer(
     kundenrezesion:Int,
     anzahl:Int,
     farbe:String,
-    var kaliber:Int,): Artikel(marke,name,preis,kundenrezesion,anzahl,farbe) {
-
-}
+    var kaliber:Int,): Artikel(marke,name,preis,kundenrezesion,anzahl,farbe) {}

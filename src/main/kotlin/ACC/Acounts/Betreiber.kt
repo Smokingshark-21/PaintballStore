@@ -4,10 +4,4 @@ class Betreiber(
     benutzername:String,
     passwort:Int
 
-):Konto(benutzername,passwort, isAdmin = true, eingeloggt = false) {
-
-
-
-
-
-}
+):Konto(benutzername,passwort, isAdmin = true, eingeloggt = false) {}

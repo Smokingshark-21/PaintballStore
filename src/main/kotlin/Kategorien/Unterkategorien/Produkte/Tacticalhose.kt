@@ -27,3 +27,4 @@ class Tacticalhose(
                 "|${fg(33)}Protektoren:$RC[${pro()}]"
     }
 }
+
