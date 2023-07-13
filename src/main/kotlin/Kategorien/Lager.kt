@@ -8,7 +8,7 @@ import Kategorien.Unterkategorien.Produkte.*
 
 
 
-class Kategorie() {
+class Lager() {
 
     var artikel = mutableListOf<Artikel>(
         Maske("HK-Army","Skull Punisher",109.90,5,15,"Schwarz","Variable","klar"),

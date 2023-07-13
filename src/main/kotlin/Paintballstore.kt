@@ -1,12 +1,12 @@
 import ACC.Account
 import ACC.Acounts.Kunde
-import Kategorien.Kategorie
+import Kategorien.Lager
 import Kategorien.Unterkategorien.Produkte.*
 
 
 class Paintballstore() {
 
-    var kategorie = Kategorie()
+    var kategorie = Lager()
     var acc = Account()
 
 

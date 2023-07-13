@@ -106,7 +106,7 @@ class Account() {
 
 
                 do {
-                    println("Geben sie ein Passwort ein min 4 maximal 5 ziffern ein")
+                    println("Geben sie ein Passwort ein min 4 maximal 5 ziffern ein ,wichtig die erste ziffer 1-9 ")
                     val pInput = readln().toInt()
 
                     if (pInput in 1000..99999){
@@ -123,7 +123,7 @@ class Account() {
 
 
                 accountliste.add(Kunde(email,benutzerName,passwort,zahlungsMehtode))
-                println("Ihr Konto wurde erfolgreich angelegt")
+                println("Ihr Konto wurde erfolgreich angelegt\n$")
                 break
 
             }catch (e:Exception){

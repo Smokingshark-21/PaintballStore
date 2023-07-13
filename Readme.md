@@ -1,10 +1,9 @@
-
-<h1 align="center">PaintballStore</h1>
+<h1 align="center" xmlns:colorh1="http://www.w3.org/1999/html">PaintballStore</h1>
 <h6 align="center">by Max Brockauf</h6>
 
-<p align="center"> <img  src="Klasendiagramm.jpg"> </p>
+<p align="center"> <img  src="tenor.gif"> </p>
 
-# Beschreibung 
+#  Beschreibung 
 
 Starten Sie das Programm, indem sie in der Main.kt ihre Konsole starten.
 
